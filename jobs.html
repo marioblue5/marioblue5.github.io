@@ -81,24 +81,31 @@
         // Search by Keyword
         document.getElementById('searchInput').addEventListener('input', filterJobs);
 
-        // Filter function for jobs
+        // Filter function for jobs using a while loop
         function filterJobs() {
             let selectedCategory = document.getElementById('categoryFilter').value;
             let selectedHours = document.getElementById('hoursFilter').value;
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let jobListItems = document.querySelectorAll('#jobList li');
+            
+            let i = 0; // Initialize counter for the while loop
 
-            jobListItems.forEach(function(item) {
+            // Loop through the job listings using a while loop
+            while (i < jobListItems.length) {
+                let item = jobListItems[i];
                 let categoryMatch = selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory;
                 let hoursMatch = selectedHours === 'all' || item.getAttribute('data-hours') === selectedHours;
                 let searchMatch = item.textContent.toLowerCase().includes(searchTerm);
 
+                // Display or hide the job based on the filters
                 if (categoryMatch && hoursMatch && searchMatch) {
                     item.style.display = 'list-item';
                 } else {
                     item.style.display = 'none';
                 }
-            });
+
+                i++; // Increment the counter
+            }
         }
     </script>
 </body>
