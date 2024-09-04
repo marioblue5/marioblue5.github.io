@@ -1,20 +1,35 @@
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Background of the body stays light grey */
+    background-color: #f4f4f4; /* Light background to keep everything readable */
+    color: #333; /* Dark text for readability */
+    line-height: 1.6;
 }
 
+/* Header Styles */
 header {
-    background-color: #98FB98; /* Light green for header */
-    color: black; /* Changed text color for better contrast */
-    padding: 10px 0;
+    background: linear-gradient(90deg, #98FB98, #90EE90); /* Subtle green gradient */
+    color: white;
+    padding: 20px;
     text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border-bottom: 4px solid #90EE90; /* A bolder bottom border */
 }
 
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* Navigation Styles */
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 20px 0 0;
 }
 
 nav ul li {
@@ -23,21 +38,63 @@ nav ul li {
 }
 
 nav ul li a {
-    color: black; /* Updated link color for better visibility */
+    color: white;
     text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background 0.3s, color 0.3s;
 }
 
+nav ul li a:hover {
+    background-color: white; /* Hover effect with light green text */
+    color: #98FB98;
+}
+
+/* Section Styles */
 section {
-    padding: 20px;
+    padding: 40px;
+    background-color: white; /* Create card-like section */
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    text-align: left;
 }
 
+section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #98FB98; /* Light green for headings */
+}
+
+/* Footer Styles */
 footer {
-    background-color: #98FB98; /* Light green for footer */
-    color: black; /* Changed text color for better contrast */
+    background-color: #98FB98; /* Green footer */
+    color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     position: fixed;
     width: 100%;
     bottom: 0;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Shadow on top of footer */
 }
+
+/* Button Styles */
+button, a.button {
+    background-color: #98FB98;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover, a.button:hover {
+    background-color: #90EE90; /* Lighter green on hover */
+    transform: scale(1.05); /* Slight grow effect on hover */
+}
+
+
 
