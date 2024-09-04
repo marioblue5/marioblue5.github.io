@@ -39,6 +39,7 @@
             <option value="all">All</option>
             <option value="0-10">0-10 hours/week</option>
             <option value="10-20">10-20 hours/week</option>
+            <option value="20-more">20 or more hours/week</option> <!-- New filter option added -->
         </select>
 
         <!-- Search by Keyword -->
@@ -91,7 +92,10 @@
             while (i < jobListItems.length) {
                 let item = jobListItems[i];
                 let categoryMatch = selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory;
-                let hoursMatch = selectedHours === 'all' || item.getAttribute('data-hours') === selectedHours;
+                let hoursMatch = selectedHours === 'all' || 
+                    (selectedHours === '0-10' && item.getAttribute('data-hours') === '0-10') || 
+                    (selectedHours === '10-20' && item.getAttribute('data-hours') === '10-20') || 
+                    (selectedHours === '20-more' && parseInt(item.getAttribute('data-hours')) >= 20); // Adjusted to match "20 or more" hours filter
                 let searchMatch = item.textContent.toLowerCase().includes(searchTerm);
 
                 // Display or hide the job based on the filters
@@ -107,6 +111,7 @@
     </script>
 </body>
 </html>
+
 
 
 
