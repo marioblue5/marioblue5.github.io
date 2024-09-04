@@ -6,7 +6,6 @@ body {
     background-color: #f4f4f4; /* Light background to keep everything readable */
     color: #333; /* Dark text for readability */
     line-height: 1.6;
-    padding-bottom: 60px; /* Add bottom padding to account for the fixed footer */
 }
 
 /* Header Styles */
@@ -16,7 +15,6 @@ header {
     padding: 20px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    /* border-bottom: 4px solid #90EE90; Remove or comment out this line to eliminate the bottom border */
 }
 
 header h1 {
@@ -75,9 +73,13 @@ footer {
     color: white;
     text-align: center;
     padding: 20px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    box-shadow: 0px -4px 8px rgba(0, 
+    width: 100%; /* Ensure footer spans full width */
+    position: relative; /* Relative positioning */
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    border-top: 4px solid #90EE90; /* Green border at the top of footer */
+}
 
+footer p {
+    margin: 0;
+}
 
