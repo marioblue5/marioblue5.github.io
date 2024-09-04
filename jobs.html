@@ -9,21 +9,22 @@
 <body>
     <header>
         <h1>Job Listings</h1>
-    <subheader>
-        <h2>Florida Student Branch</h2>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="jobs.html">Job Listings</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul>
-        </nav>
+        <subheader>
+            <h2>Florida Student Branch</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="jobs.html">Job Listings</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </subheader>
     </header>
 
     <section>
         <h3>Available Positions</h3>
 
-        <!-- Filter Section -->
+        <!-- Filter by Category -->
         <label for="categoryFilter">Filter by Category:</label>
         <select id="categoryFilter">
             <option value="all">All</option>
@@ -32,21 +33,25 @@
             <option value="internships">Internships</option>
         </select>
 
+        <!-- Search by Keyword -->
+        <label for="searchInput">Search by Keyword:</label>
+        <input type="text" id="searchInput" placeholder="Enter keywords...">
+
         <!-- Job Listings Section -->
         <ul id="jobList">
             <li data-category="research">
-                <h4>Research Positions </h4>
-                <p>Description of the job and requirements.</p>
+                <h4>Research Positions</h4>
+                <p>Position in a research lab involving data analysis and fieldwork.</p>
                 <p><a href="mailto:contact@yourclub.com">Apply Now</a></p>
             </li>
             <li data-category="jobs">
-                <h4>Job Positions </h4>
-                <p>Description of the job and requirements.</p>
+                <h4>Job Positions</h4>
+                <p>Full-time job in engineering with experience required.</p>
                 <p><a href="mailto:contact@yourclub.com">Apply Now</a></p>
             </li>
             <li data-category="internships">
-                <h4>Internship Positions </h4>
-                <p>Description of the job and requirements.</p>
+                <h4>Internship Positions</h4>
+                <p>Summer internship with a focus on environmental sustainability.</p>
                 <p><a href="mailto:contact@yourclub.com">Apply Now</a></p>
             </li>
             <!-- Add more jobs here -->
@@ -59,6 +64,7 @@
 
     <!-- JavaScript for filtering -->
     <script>
+        // Filter by Category
         document.getElementById('categoryFilter').addEventListener('change', function() {
             let selectedCategory = this.value;
             let jobListItems = document.querySelectorAll('#jobList li');
@@ -71,6 +77,22 @@
                 }
             });
         });
+
+        // Search by Keyword
+        document.getElementById('searchInput').addEventListener('input', function() {
+            let searchTerm = this.value.toLowerCase();
+            let jobListItems = document.querySelectorAll('#jobList li');
+
+            jobListItems.forEach(function(item) {
+                let text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'list-item';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 </html>
+
