@@ -33,25 +33,33 @@
             <option value="internships">Internships</option>
         </select>
 
+        <!-- Filter by Hours Per Week -->
+        <label for="hoursFilter">Filter by Hours Per Week:</label>
+        <select id="hoursFilter">
+            <option value="all">All</option>
+            <option value="0-10">0-10 hours/week</option>
+            <option value="10-20">10-20 hours/week</option>
+        </select>
+
         <!-- Search by Keyword -->
         <label for="searchInput">Search by Keyword:</label>
         <input type="text" id="searchInput" placeholder="Enter keywords...">
 
         <!-- Job Listings Section -->
         <ul id="jobList">
-            <li data-category="research">
-                <h4>Research Positions</h4>
-                <p>Position in a research lab involving data analysis and fieldwork.</p>
+            <li data-category="research" data-hours="0-10">
+                <h4>Research Position 1</h4>
+                <p>Position in a research lab involving data analysis and fieldwork. 0-10 hours per week.</p>
                 <p><a href="mailto:contact@yourclub.com">Apply Now</a></p>
             </li>
-            <li data-category="jobs">
-                <h4>Job Positions</h4>
-                <p>Full-time job in engineering with experience required.</p>
+            <li data-category="jobs" data-hours="10-20">
+                <h4>Engineering Job 1</h4>
+                <p>Full-time engineering job with 10-20 hours per week required.</p>
                 <p><a href="mailto:contact@yourclub.com">Apply Now</a></p>
             </li>
-            <li data-category="internships">
-                <h4>Internship Positions</h4>
-                <p>Summer internship with a focus on environmental sustainability.</p>
+            <li data-category="internships" data-hours="0-10">
+                <h4>Internship Position 1</h4>
+                <p>Summer internship with a focus on sustainability, 0-10 hours per week.</p>
                 <p><a href="mailto:contact@yourclub.com">Apply Now</a></p>
             </li>
             <!-- Add more jobs here -->
@@ -65,34 +73,35 @@
     <!-- JavaScript for filtering -->
     <script>
         // Filter by Category
-        document.getElementById('categoryFilter').addEventListener('change', function() {
-            let selectedCategory = this.value;
-            let jobListItems = document.querySelectorAll('#jobList li');
-
-            jobListItems.forEach(function(item) {
-                if (selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory) {
-                    item.style.display = 'list-item';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
+        document.getElementById('categoryFilter').addEventListener('change', filterJobs);
+        
+        // Filter by Hours Per Week
+        document.getElementById('hoursFilter').addEventListener('change', filterJobs);
 
         // Search by Keyword
-        document.getElementById('searchInput').addEventListener('input', function() {
-            let searchTerm = this.value.toLowerCase();
+        document.getElementById('searchInput').addEventListener('input', filterJobs);
+
+        // Filter function for jobs
+        function filterJobs() {
+            let selectedCategory = document.getElementById('categoryFilter').value;
+            let selectedHours = document.getElementById('hoursFilter').value;
+            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let jobListItems = document.querySelectorAll('#jobList li');
 
             jobListItems.forEach(function(item) {
-                let text = item.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
+                let categoryMatch = selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory;
+                let hoursMatch = selectedHours === 'all' || item.getAttribute('data-hours') === selectedHours;
+                let searchMatch = item.textContent.toLowerCase().includes(searchTerm);
+
+                if (categoryMatch && hoursMatch && searchMatch) {
                     item.style.display = 'list-item';
                 } else {
                     item.style.display = 'none';
                 }
             });
-        });
+        }
     </script>
 </body>
 </html>
+
 
