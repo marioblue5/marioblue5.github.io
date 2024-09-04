@@ -1,50 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>About Us</h1>
-        <subheader>
-            <h2>Florida Student Branch</h2>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="jobs.html">Job Listings</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                </ul>
-            </nav>
-        </subheader>
-    </header>
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background to keep everything readable */
+    color: #333; /* Dark text for readability */
+    line-height: 1.6;
+    min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+    position: relative;
+    padding-bottom: 80px; /* Add bottom padding to account for the fixed footer */
+}
 
-    <section>
-        <h3>Who We Are</h3>
-        <p>The Florida Student Branch of the American Society of Agricultural and Biological Engineers (ASABE) is an educational and scientific organization focused on advancing engineering solutions for agricultural, food, and biological systems. Our members engage in a variety of activities, including socials, sports, and competitions. A highlight of our year is participating in the annual Fountain Wars event at the international ASABE convention, where students showcase their engineering skills in a fun and competitive environment.</p>
+/* Header Styles */
+header {
+    background: linear-gradient(90deg, #98FB98, #90EE90); /* Subtle green gradient */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
 
-        <h3>Our Mission</h3>
-        <p>ASABE is a global organization dedicated to advancing Agricultural and Biological Engineering through professional development, continuing education, and networking. At the University of Florida, our ASABE Student Branch provides members with opportunities for pre-professional growth, leadership development, and participation in engineering design competitions like Fountain Wars and the Quarter-Scale Tractor event. We also host fun social events and offer free food at all of our meetings!</p>
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
 
-        <h3>Follow Us on Social Media</h3>
-        <p>You can follow us on our social media platforms to stay updated:</p>
-        <ul>
-            <li><a href="https://www.facebook.com/groups/2202524457/" target="_blank">Facebook</a></li>
-            <li><a href="https://www.instagram.com/fsb_asabe/" target="_blank">Instagram</a></li>
-        </ul>
-    </section>
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
 
-    <!-- Link to Official Website -->
-    <section>
-        <h3>Visit Our Official Website</h3>
-        <p>To learn more, visit the official website of the Florida Student Branch of ASABE at <a href="https://abe.ufl.edu/undergraduate/student-organizations/asabe/" target="_blank">UF ASABE Website</a>.</p>
-    </section>
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
 
-    <footer>
-        <p>&copy;2024 UF ASABE. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: white; /* Hover effect with light green text */
+    color: #98FB98;
+}
+
+/* Section Styles */
+section {
+    padding: 40px;
+    background-color: white; /* Create card-like section */
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    text-align: left;
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #98FB98; /* Light green for headings */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #98FB98; /* Green footer */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: absolute; /* Position footer at the bottom of the page */
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Shadow on top of footer */
+}
+
+/* Button Styles */
+button, a.button {
+    background-color: #98FB98;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover, a.button:hover {
+    background-color: #90EE90; /* Lighter green on hover */
+    transform: scale(1.05); /* Slight grow effect on hover */
+}
 
