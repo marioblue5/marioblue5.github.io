@@ -3,38 +3,32 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Light background to keep everything readable */
     color: #333;
     line-height: 1.6;
 }
 
 /* Header Styles */
 header {
+    text-align: center; /* Center the title and subtitle */
     padding: 20px;
     background: linear-gradient(90deg, #A5D6A7, #81C784); /* Subtle green gradient */
     color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    border-bottom: 4px solid #81C784;
-}
-
-/* Flexbox for aligning logo and title */
-.logo-title {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    border-bottom: 4px solid #81C784; /* Consistent green border */
 }
 
 /* Logo Styles */
 .logo {
-    width: 80px; /* Make the logo smaller */
+    width: 120px; /* Make the logo slightly bigger */
     height: auto;
-    margin-right: 15px; /* Add some space between the logo and title */
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
 }
 
-/* Title Styles */
-header h1 {
+/* Title and Subtitle */
+header h1, subheader h2 {
     margin: 0;
-    font-size: 1.8em;
 }
 
 /* Navigation Styles */
@@ -43,6 +37,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: center; /* Center the nav items */
 }
 
 nav ul li {
