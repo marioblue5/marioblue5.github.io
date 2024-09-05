@@ -50,8 +50,7 @@
         <ul id="jobList">
             <li data-category="research" data-hours="40">
                 <h4>Research Position 1</h4>
-                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the Soil, Water, and Ecosystem Sciences Department at the University of Florida on our main campus in Gainesville. 
-                <p>Work hours: 40 hours a week.</p>
+                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the Soil, Water, and Ecosystem Sciences Department at the University of Florida on our main campus in Gainesville. Work hours: 40 hours a week.</p>
                 <p>Salary: From $17 to $22 per hour depending on experience.</p>
             </li>
             <li data-category="jobs" data-hours="10-20">
@@ -71,53 +70,50 @@
 
     <!-- JavaScript for filtering and search functionality -->
     <script>
-        // Event listeners for filter change and search input
         document.getElementById('categoryFilter').addEventListener('change', filterJobs);
         document.getElementById('hoursFilter').addEventListener('change', filterJobs);
         document.getElementById('searchInput').addEventListener('input', filterJobs);
 
-        // Main filter function
         function filterJobs() {
             const selectedCategory = document.getElementById('categoryFilter').value;
             const selectedHours = document.getElementById('hoursFilter').value;
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const jobListItems = document.querySelectorAll('#jobList li');
 
-            jobListItems.forEach(function (item) {
-                // Get category and hours from the data attributes
-                const category = item.getAttribute('data-category');
-                const hours = parseInt(item.getAttribute('data-hours'));
+            let matchesFound = false; // Flag to check if we have matches
 
-                // Match the selected category
-                const categoryMatch = (selectedCategory === 'all' || category === selectedCategory);
+            // Filter logic using while loop to keep retrying until matches are found
+            while (!matchesFound) {
+                jobListItems.forEach(function (item) {
+                    const category = item.getAttribute('data-category');
+                    const hours = parseInt(item.getAttribute('data-hours'));
 
-                // Match the selected hours filter
-                let hoursMatch = false;
-                if (selectedHours === 'all') {
-                    hoursMatch = true;
-                } else if (selectedHours === '0-10' && hours <= 10) {
-                    hoursMatch = true;
-                } else if (selectedHours === '10-20' && hours > 10 && hours <= 20) {
-                    hoursMatch = true;
-                } else if (selectedHours === '20-more' && hours > 20) {
-                    hoursMatch = true;
+                    // Match category, hours, and search term
+                    const categoryMatch = (selectedCategory === 'all' || category === selectedCategory);
+                    const hoursMatch = selectedHours === 'all' || 
+                        (selectedHours === '0-10' && hours <= 10) || 
+                        (selectedHours === '10-20' && hours > 10 && hours <= 20) || 
+                        (selectedHours === '20-more' && hours > 20);
+                    const searchMatch = item.textContent.toLowerCase().includes(searchTerm);
+
+                    if (categoryMatch && hoursMatch && searchMatch) {
+                        item.style.display = 'list-item';
+                        matchesFound = true; // A match is found, we can exit the loop
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // If no matches are found, prompt the user to refine the search
+                if (!matchesFound) {
+                    searchTerm = prompt("No matches found. Please enter a new search term:").toLowerCase();
+                    document.getElementById('searchInput').value = searchTerm; // Update input field
                 }
-
-                // Match the keyword search
-                const searchMatch = item.textContent.toLowerCase().includes(searchTerm);
-
-                // Check if all conditions are met (category, hours, and search)
-                if (categoryMatch && hoursMatch && searchMatch) {
-                    item.style.display = 'list-item';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+            }
         }
     </script>
 </body>
 </html>
-
 
 
 
