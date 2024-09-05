@@ -10,7 +10,7 @@ body {
 
 /* Header Styles */
 header {
-    background: linear-gradient(90deg, #98FB98, #90EE90); /* Subtle green gradient */
+    background: linear-gradient(90deg, #A5D6A7, #81C784); /* Subtler green gradient */
     color: white;
     padding: 20px;
     text-align: center;
@@ -47,7 +47,7 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: white; /* Hover effect with light green text */
-    color: #98FB98;
+    color: #A5D6A7;
 }
 
 /* Section Styles */
@@ -64,22 +64,23 @@ section {
 section h2 {
     font-size: 2em;
     margin-bottom: 20px;
-    color: #98FB98; /* Light green for headings */
+    color: #A5D6A7; /* Less vibrant green for headings */
 }
 
 /* Footer Styles */
 footer {
-    background-color: #98FB98; /* Green footer */
+    background-color: #A5D6A7; /* Less vibrant green footer */
     color: white;
     text-align: center;
     padding: 20px 0;
     width: 100%; /* Ensure footer spans full width */
     position: relative; /* Relative positioning */
     box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
-    border-top: 4px solid #90EE90; /* Green border at the top of footer */
+    border-top: 4px solid #81C784; /* Subdued green border at the top of footer */
 }
 
 footer p {
     margin: 0;
 }
+
 
