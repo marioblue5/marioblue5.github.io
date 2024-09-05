@@ -10,18 +10,12 @@ body {
 
 /* Header Styles */
 header {
-    background: linear-gradient(90deg, #A5D6A7, #81C784); /* Subtler green gradient */
+    background: linear-gradient(90deg, #A5D6A7, #81C784); /* Subtle green gradient */
     color: white;
     padding: 20px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    letter-spacing: 2px;
-    font-weight: bold;
+    border-bottom: 4px solid #81C784; /* Consistent border on all pages */
 }
 
 /* Navigation Styles */
@@ -57,26 +51,19 @@ section {
     margin: 20px auto;
     max-width: 900px;
     border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Consistent shadow */
     text-align: left;
-}
-
-section h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #A5D6A7; /* Less vibrant green for headings */
 }
 
 /* Footer Styles */
 footer {
-    background-color: #A5D6A7; /* Less vibrant green footer */
+    background-color: #A5D6A7;
     color: white;
     text-align: center;
     padding: 20px 0;
-    width: 100%; /* Ensure footer spans full width */
-    position: relative; /* Relative positioning */
-    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
-    border-top: 4px solid #81C784; /* Subdued green border at the top of footer */
+    width: 100%;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Consistent footer shadow */
+    border-top: 4px solid #81C784; /* Consistent border on footer */
 }
 
 footer p {
