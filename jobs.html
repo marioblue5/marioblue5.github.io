@@ -50,8 +50,7 @@
         <ul id="jobList">
             <li data-category="research" data-hours="40">
                 <h4>Research Position 1</h4>
-                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the Soil, Water, and Ecosystem Sciences Department at the University of Florida on our main campus in Gainesville to be filled by an applicant with a BS or higher degree. The work consists of anything from weighing soil samples, making chemical reagents, preparing samples for various soil chemical analyses, maintaining clean laboratory areas and other general lab duties. 
-                <p></p>Work hours: 40 hours a week.</p>
+                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the Soil, Water, and Ecosystem Sciences Department at the University of Florida on our main campus in Gainesville. Work hours: 40 hours a week.</p>
                 <p>Salary: From $17 to $22 per hour depending on experience.</p>
             </li>
             <li data-category="jobs" data-hours="10-20">
@@ -68,6 +67,36 @@
     <footer>
         <p>&copy;2024 UF ASABE. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for filtering and search functionality -->
+    <script>
+        document.getElementById('categoryFilter').addEventListener('change', filterJobs);
+        document.getElementById('hoursFilter').addEventListener('change', filterJobs);
+        document.getElementById('searchInput').addEventListener('input', filterJobs);
+
+        function filterJobs() {
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            const selectedHours = document.getElementById('hoursFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const jobListItems = document.querySelectorAll('#jobList li');
+
+            jobListItems.forEach(function (item) {
+                const categoryMatch = selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory;
+                const hours = parseInt(item.getAttribute('data-hours'));
+                const hoursMatch = selectedHours === 'all' || 
+                    (selectedHours === '0-10' && hours <= 10) || 
+                    (selectedHours === '10-20' && hours > 10 && hours <= 20) || 
+                    (selectedHours === '20-more' && hours > 20);
+                const searchMatch = item.textContent.toLowerCase().includes(searchTerm);
+
+                if (categoryMatch && hoursMatch && searchMatch) {
+                    item.style.display = 'list-item';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 
