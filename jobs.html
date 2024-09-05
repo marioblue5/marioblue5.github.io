@@ -70,10 +70,12 @@
 
     <!-- JavaScript for filtering and search functionality -->
     <script>
+        // Event listeners for filter change and search input
         document.getElementById('categoryFilter').addEventListener('change', filterJobs);
         document.getElementById('hoursFilter').addEventListener('change', filterJobs);
         document.getElementById('searchInput').addEventListener('input', filterJobs);
 
+        // Main filter function
         function filterJobs() {
             const selectedCategory = document.getElementById('categoryFilter').value;
             const selectedHours = document.getElementById('hoursFilter').value;
@@ -81,14 +83,29 @@
             const jobListItems = document.querySelectorAll('#jobList li');
 
             jobListItems.forEach(function (item) {
-                const categoryMatch = selectedCategory === 'all' || item.getAttribute('data-category') === selectedCategory;
+                // Get category and hours from the data attributes
+                const category = item.getAttribute('data-category');
                 const hours = parseInt(item.getAttribute('data-hours'));
-                const hoursMatch = selectedHours === 'all' || 
-                    (selectedHours === '0-10' && hours <= 10) || 
-                    (selectedHours === '10-20' && hours > 10 && hours <= 20) || 
-                    (selectedHours === '20-more' && hours > 20);
+
+                // Match the selected category
+                const categoryMatch = (selectedCategory === 'all' || category === selectedCategory);
+
+                // Match the selected hours filter
+                let hoursMatch = false;
+                if (selectedHours === 'all') {
+                    hoursMatch = true;
+                } else if (selectedHours === '0-10' && hours <= 10) {
+                    hoursMatch = true;
+                } else if (selectedHours === '10-20' && hours > 10 && hours <= 20) {
+                    hoursMatch = true;
+                } else if (selectedHours === '20-more' && hours > 20) {
+                    hoursMatch = true;
+                }
+
+                // Match the keyword search
                 const searchMatch = item.textContent.toLowerCase().includes(searchTerm);
 
+                // Check if all conditions are met (category, hours, and search)
                 if (categoryMatch && hoursMatch && searchMatch) {
                     item.style.display = 'list-item';
                 } else {
