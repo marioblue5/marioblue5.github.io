@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4; /* Light background to keep everything readable */
-    color: #333; /* Dark text for readability */
+    color: #333;
     line-height: 1.6;
 }
 
@@ -15,7 +15,7 @@ header {
     padding: 20px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    border-bottom: 4px solid #81C784; /* Consistent border on all pages */
+    border-bottom: 4px solid #81C784; /* Consistent green border */
 }
 
 /* Navigation Styles */
@@ -57,13 +57,13 @@ section {
 
 /* Footer Styles */
 footer {
-    background-color: #A5D6A7;
+    background-color: #A5D6A7; /* Green footer */
     color: white;
     text-align: center;
     padding: 20px 0;
-    width: 100%;
+    width: 100%; /* Ensure footer spans full width */
     box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Consistent footer shadow */
-    border-top: 4px solid #81C784; /* Consistent border on footer */
+    border-top: 4px solid #81C784; /* Consistent green border */
 }
 
 footer p {
