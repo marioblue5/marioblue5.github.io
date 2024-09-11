@@ -51,22 +51,19 @@
         <ul id="jobList">
             <li data-category="research" data-hours="40">
                 <h4>Research Position</h4>
-                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the Soil, Water, and Ecosystem Sciences Department at the University of Florida on our main campus in Gainesville to be filled by an applicant with a BS or higher degree. The work consists of anything from weighing soil samples, making chemical reagents, preparing samples for various soil chemical analyses, maintaining clean laboratory areas and other general lab duties. Initial training will be provided, although prior lab experience and the ability to conduct preliminary data analyses will be an added advantage.
-                this is an Other Personnel Services (OPS) position, available immediately and will end June 30, 2025. However, there is a likelihood of the extension of the current grant for another year.</p>
+                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the Soil, Water, and Ecosystem Sciences Department at the University of Florida on our main campus in Gainesville to be filled by an applicant with a BS or higher degree. The work consists of anything from weighing soil samples, making chemical reagents, preparing samples for various soil chemical analyses, maintaining clean laboratory areas and other general lab duties.</p>
                 <p>Work hours: 40 hours a week.</p>    
                 <p>Salary: From $17 to $22 per hour depending on experience.</p>
                 <p>Contact: lilitvardanyan@ufl.edu</p>
             </li>
             <li data-category="internships" data-hours="0-10">
                 <h4>Internship Position</h4>
-                <p> Clearable Talent Pipeline (CTP) pilot program, which will be launching its second cohort in Spring 2025 and starting applications on September 2nd.
-                The CTP is an initiative taken by our directors, Dr. Damon Woodard and Dr. Domenic Forte, to create a selective talent pool of high-performing undergraduate students interested in pursuing careers in the National Security community and provide them with knowledge and research experience with AI and Machine Learning and start them early on their paths to earning a Security Clearance. There is a huge talent deficit for AI research in the Federal Government with growing concerns that need to be addressed, and we have support from several recruiters interested in filling their ranks.
-                This is a Spring to Fall program open to all students in the Herbert Wertheim College of Engineering with a $5000 stipend compensating students for 10 hours of guided research and attendance of meetings. </p>    
+                <p>Clearable Talent Pipeline (CTP) pilot program, which will be launching its second cohort in Spring 2025 and starting applications on September 2nd. The CTP is an initiative aimed at creating a talent pool of high-performing students.</p>    
                 <p>For more details, visit the <a href="https://fins.institute.ufl.edu/index.php/talent-pipeline/" target="_blank">Talent Pipeline</a> page.</p>
             </li>
             <li data-category="jobs" data-hours="all">
                 <h4>Job Position</h4>
-                <p>Please see attached graduate research opportunities available in Dr. Tiffany Messer's mesoLab at the University of Kentucky.</p>
+                <p>Graduate research opportunities available in Dr. Tiffany Messer's mesoLab at the University of Kentucky.</p>
                 <a href="MesserGraduatePostionOpenings.pdf" download="Job_Listings_ASABE.pdf">Download Job Listings (PDF)</a>
             </li>
             <li data-category="graduate school" data-hours="all">
@@ -83,50 +80,43 @@
 
     <!-- JavaScript for filtering and search functionality -->
     <script>
+        // Event listeners for the filters and search bar
         document.getElementById('categoryFilter').addEventListener('change', filterJobs);
         document.getElementById('hoursFilter').addEventListener('change', filterJobs);
         document.getElementById('searchInput').addEventListener('input', filterJobs);
 
+        // Filter and search function
         function filterJobs() {
             const selectedCategory = document.getElementById('categoryFilter').value;
             const selectedHours = document.getElementById('hoursFilter').value;
-            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const jobListItems = document.querySelectorAll('#jobList li');
 
-            let matchesFound = false; // Flag to check if we have matches
+            // Iterate through job list items and apply filter conditions
+            jobListItems.forEach(function (item) {
+                const category = item.getAttribute('data-category');
+                const hours = parseInt(item.getAttribute('data-hours'));
 
-            // Filter logic using while loop to keep retrying until matches are found
-            while (!matchesFound) {
-                jobListItems.forEach(function (item) {
-                    const category = item.getAttribute('data-category');
-                    const hours = parseInt(item.getAttribute('data-hours'));
+                // Check category, hours, and search term
+                const categoryMatch = (selectedCategory === 'all' || category === selectedCategory);
+                const hoursMatch = selectedHours === 'all' || 
+                    (selectedHours === '0-10' && hours <= 10) || 
+                    (selectedHours === '10-20' && hours > 10 && hours <= 20) || 
+                    (selectedHours === '20-more' && hours > 20);
+                const searchMatch = item.textContent.toLowerCase().includes(searchTerm);
 
-                    // Match category, hours, and search term
-                    const categoryMatch = (selectedCategory === 'all' || category === selectedCategory);
-                    const hoursMatch = selectedHours === 'all' || 
-                        (selectedHours === '0-10' && hours <= 10) || 
-                        (selectedHours === '10-20' && hours > 10 && hours <= 20) || 
-                        (selectedHours === '20-more' && hours > 20);
-                    const searchMatch = item.textContent.toLowerCase().includes(searchTerm);
-
-                    if (categoryMatch && hoursMatch && searchMatch) {
-                        item.style.display = 'list-item';
-                        matchesFound = true; // A match is found, we can exit the loop
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-
-                // If no matches are found, prompt the user to refine the search
-                if (!matchesFound) {
-                    searchTerm = prompt("No matches found. Please enter a new search term:").toLowerCase();
-                    document.getElementById('searchInput').value = searchTerm; // Update input field
+                // Show or hide based on the filter and search matches
+                if (categoryMatch && hoursMatch && searchMatch) {
+                    item.style.display = 'list-item';
+                } else {
+                    item.style.display = 'none';
                 }
-            }
+            });
         }
     </script>
 </body>
 </html>
+
 
 
 
