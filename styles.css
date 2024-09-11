@@ -1,16 +1,36 @@
 /* Base Styles */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%; /* Ensure the body and html cover the entire screen height */
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4; /* Light background to keep everything readable */
     color: #333;
     line-height: 1.6;
 }
 
+/* Wrapper for the content */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Content will expand to fill available space */
+section {
+    flex: 1;
+    padding: 40px;
+    background-color: white; /* Create card-like section */
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+    text-align: left;
+}
+
 /* Header Styles */
 header {
-    text-align: center; /* Center the title and subtitle */
+    text-align: center;
     padding: 20px;
     background: linear-gradient(90deg, #4A6FA5, #6F89C4); /* Muted cobalt blue gradient */
     color: white;
@@ -23,7 +43,7 @@ header {
     width: 120px; /* Make the logo slightly bigger */
     height: auto;
     display: block;
-    margin: 0 auto; /* Center the logo horizontally */
+    margin: 0 auto; /* Center the logo */
 }
 
 /* Title and Subtitle */
@@ -58,17 +78,6 @@ nav ul li a:hover {
     color: #4A6FA5;
 }
 
-/* Section Styles */
-section {
-    padding: 40px;
-    background-color: white; /* Create card-like section */
-    margin: 20px auto;
-    max-width: 900px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Consistent shadow */
-    text-align: left;
-}
-
 /* Footer Styles */
 footer {
     background-color: #4A6FA5; /* Muted cobalt blue */
@@ -78,9 +87,10 @@ footer {
     width: 100%;
     box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Consistent footer shadow */
     border-top: 4px solid #6F89C4; /* Border matching the muted cobalt blue */
+    position: relative;
+    bottom: 0;
 }
 
 footer p {
     margin: 0;
 }
-
