@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Listings</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Ensure the filters and search bar are in line */
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px; /* Space between elements */
+            margin-bottom: 20px; /* Add some space below the filters */
+        }
+
+        .filter-container label {
+            margin-right: 5px; /* Add space between label and select/input */
+        }
+
+        .filter-container select,
+        .filter-container input {
+            padding: 5px;
+            font-size: 1em;
+        }
+
+        /* Optional: Add styles for responsiveness */
+        @media (max-width: 768px) {
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,41 +52,50 @@
     <section>
         <h3>Available Positions</h3>
 
-        <!-- Filter by Category -->
-        <label for="categoryFilter">Filter by Category:</label>
-        <select id="categoryFilter">
-            <option value="all">All</option>
-            <option value="research">Research</option>
-            <option value="jobs">Jobs</option>
-            <option value="internships">Internships</option>
-            <option value="graduate school">Graduate School</option>
-        </select>
+        <!-- Filter and Search Section -->
+        <div class="filter-container">
+            <!-- Filter by Category -->
+            <div class="filter-group">
+                <label for="categoryFilter">Filter by Category:</label>
+                <select id="categoryFilter">
+                    <option value="all">All</option>
+                    <option value="research">Research</option>
+                    <option value="jobs">Jobs</option>
+                    <option value="internships">Internships</option>
+                    <option value="graduate school">Graduate School</option>
+                </select>
+            </div>
 
-        <!-- Filter by Hours Per Week -->
-        <label for="hoursFilter">Filter by Hours Per Week:</label>
-        <select id="hoursFilter">
-            <option value="all">All</option>
-            <option value="0-10">0-10 hours/week</option>
-            <option value="10-20">10-20 hours/week</option>
-            <option value="20-more">20 or more hours/week</option>
-        </select>
+            <!-- Filter by Hours Per Week -->
+            <div class="filter-group">
+                <label for="hoursFilter">Filter by Hours Per Week:</label>
+                <select id="hoursFilter">
+                    <option value="all">All</option>
+                    <option value="0-10">0-10 hours/week</option>
+                    <option value="10-20">10-20 hours/week</option>
+                    <option value="20-more">20 or more hours/week</option>
+                </select>
+            </div>
 
-        <!-- Search by Keyword -->
-        <label for="searchInput">Search by Keyword:</label>
-        <input type="text" id="searchInput" placeholder="Enter keywords...">
+            <!-- Search by Keyword -->
+            <div class="filter-group">
+                <label for="searchInput">Search by Keyword:</label>
+                <input type="text" id="searchInput" placeholder="Enter keywords...">
+            </div>
+        </div>
 
         <!-- Job Listings Section -->
         <ul id="jobList">
             <li data-category="research" data-hours="40">
                 <h4>Research Position</h4>
-                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the Soil, Water, and Ecosystem Sciences Department at the University of Florida on our main campus in Gainesville to be filled by an applicant with a BS or higher degree. The work consists of anything from weighing soil samples, making chemical reagents, preparing samples for various soil chemical analyses, maintaining clean laboratory areas and other general lab duties.</p>
+                <p>Full-time Lab technician position in the Environmental Soil Chemistry Laboratory at the University of Florida.</p>
                 <p>Work hours: 40 hours a week.</p>    
                 <p>Salary: From $17 to $22 per hour depending on experience.</p>
                 <p>Contact: lilitvardanyan@ufl.edu</p>
             </li>
             <li data-category="internships" data-hours="0-10">
                 <h4>Internship Position</h4>
-                <p>Clearable Talent Pipeline (CTP) pilot program, which will be launching its second cohort in Spring 2025 and starting applications on September 2nd. The CTP is an initiative aimed at creating a talent pool of high-performing students.</p>    
+                <p>Clearable Talent Pipeline (CTP) pilot program, launching in Spring 2025. Applications open on September 2nd.</p>    
                 <p>For more details, visit the <a href="https://fins.institute.ufl.edu/index.php/talent-pipeline/" target="_blank">Talent Pipeline</a> page.</p>
             </li>
             <li data-category="jobs" data-hours="all">
@@ -92,20 +129,30 @@
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const jobListItems = document.querySelectorAll('#jobList li');
 
-            // Iterate through job list items and apply filter conditions
             jobListItems.forEach(function (item) {
                 const category = item.getAttribute('data-category');
-                const hours = parseInt(item.getAttribute('data-hours'));
+                const hours = item.getAttribute('data-hours');
+                const textContent = item.textContent.toLowerCase();
 
-                // Check category, hours, and search term
-                const categoryMatch = (selectedCategory === 'all' || category === selectedCategory);
-                const hoursMatch = selectedHours === 'all' || 
-                    (selectedHours === '0-10' && hours <= 10) || 
-                    (selectedHours === '10-20' && hours > 10 && hours <= 20) || 
-                    (selectedHours === '20-more' && hours > 20);
-                const searchMatch = item.textContent.toLowerCase().includes(searchTerm);
+                // Check category match
+                const categoryMatch = selectedCategory === 'all' || category === selectedCategory;
 
-                // Show or hide based on the filter and search matches
+                // Check hours match
+                let hoursMatch = false;
+                if (selectedHours === 'all') {
+                    hoursMatch = true;
+                } else if (selectedHours === '0-10' && hours <= 10) {
+                    hoursMatch = true;
+                } else if (selectedHours === '10-20' && hours > 10 && hours <= 20) {
+                    hoursMatch = true;
+                } else if (selectedHours === '20-more' && hours > 20) {
+                    hoursMatch = true;
+                }
+
+                // Check search term match
+                const searchMatch = textContent.includes(searchTerm);
+
+                // If all conditions match, show the item; otherwise, hide it
                 if (categoryMatch && hoursMatch && searchMatch) {
                     item.style.display = 'list-item';
                 } else {
@@ -116,9 +163,6 @@
     </script>
 </body>
 </html>
-
-
-
 
 
 
