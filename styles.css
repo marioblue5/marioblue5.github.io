@@ -10,6 +10,7 @@ body {
 
 /* Header Styles */
 header {
+    text-align: center; /* Center the title and subtitle */
     padding: 20px;
     background: linear-gradient(90deg, #4A6FA5, #6F89C4); /* Muted cobalt blue gradient */
     color: white;
@@ -17,26 +18,15 @@ header {
     border-bottom: 4px solid #4A6FA5; /* Consistent muted cobalt blue border */
 }
 
-/* Flexbox for aligning logo on the left and text in the center */
-.logo-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Logo Styles: Make it bigger and align to the left */
+/* Logo Styles */
 .logo {
-    width: 150px; /* Slightly bigger logo */
+    width: 120px; /* Make the logo slightly bigger */
     height: auto;
-    margin-right: 20px; /* Space between the logo and the text */
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
 }
 
-/* Header Text (Title and Subtitle) */
-.header-text {
-    flex-grow: 1;
-    text-align: center; /* Ensure the title and subtitle are centered */
-}
-
+/* Title and Subtitle */
 header h1, subheader h2 {
     margin: 0;
 }
