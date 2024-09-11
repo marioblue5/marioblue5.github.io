@@ -10,7 +10,6 @@ body {
 
 /* Header Styles */
 header {
-    text-align: center; /* Center the title and subtitle */
     padding: 20px;
     background: linear-gradient(90deg, #4A6FA5, #6F89C4); /* Muted cobalt blue gradient */
     color: white;
@@ -18,15 +17,26 @@ header {
     border-bottom: 4px solid #4A6FA5; /* Consistent muted cobalt blue border */
 }
 
-/* Logo Styles */
-.logo {
-    width: 120px; /* Make the logo slightly bigger */
-    height: auto;
-    display: block;
-    margin: 0 auto; /* Center the logo horizontally */
+/* Flexbox for aligning logo on the left and text in the center */
+.logo-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Title and Subtitle */
+/* Logo Styles: Make it bigger and align to the left */
+.logo {
+    width: 150px; /* Slightly bigger logo */
+    height: auto;
+    margin-right: 20px; /* Space between the logo and the text */
+}
+
+/* Header Text (Title and Subtitle) */
+.header-text {
+    flex-grow: 1;
+    text-align: center; /* Ensure the title and subtitle are centered */
+}
+
 header h1, subheader h2 {
     margin: 0;
 }
@@ -76,4 +86,11 @@ footer {
     text-align: center;
     padding: 20px 0;
     width: 100%;
-    box-shadow: 0px -4px 8px rgba(0
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); /* Consistent footer shadow */
+    border-top: 4px solid #6F89C4; /* Border matching the muted cobalt blue */
+}
+
+footer p {
+    margin: 0;
+}
+
